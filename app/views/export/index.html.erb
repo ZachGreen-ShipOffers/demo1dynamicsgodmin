@@ -1,0 +1,39 @@
+<h1>Export</h1>
+
+<table class="table table-striped table-condensed">
+  <thead>
+    <tr>
+      <th>Code</th>
+      <th>Export?</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @cpny.each do |c| %>
+    <tr>
+      <td><%= c.dyna_code %></td>
+      <td>
+        <% if c.run_export %>
+          <span class="glyphicon glyphicon-ok" aria-hidden="true" style="color:green;"></span>
+        <% else %>
+          <span class="glyphicon glyphicon-remove" aria-hidden="true" style="color:red;"></span>
+        <% end %>
+      </td>
+      <td>
+        <% if c.run_export %>
+          <button class="export" data-code="<%= c.dyna_code %>">Run</button>
+        <% else %>
+          <button disabled="disabled">Run</button>
+        <% end %>
+      </td>
+      <td>
+        <% if c.dynamics_infos.where(date: Date.today).first.nil? %>
+          "None for date"
+        <% else %>
+          <%= c.dynamics_infos.where(date: Date.today).first.ship_count %>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
