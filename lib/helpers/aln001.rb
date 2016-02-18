@@ -25,7 +25,7 @@ module DynamicsHelper
           end
         end
       end
-      raise ArgumentError,"\n\nUnknown SKU Found:\n Order ID:#{the_order.order_id}\tSKU: #{sku}\n\n" unless @@allowed_skus.include?(sku)
+      sku_error(the_order, sku) unless @@allowed_skus.include?(sku)
       super(the_order,sku,quantity)
     end
 

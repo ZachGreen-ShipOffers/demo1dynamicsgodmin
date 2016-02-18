@@ -25,7 +25,8 @@ module DynamicsHelper
       if sku == '1A-27J1-LEJ4'
         sku = '261-CLRSPT-101'
       end
-      raise ArgumentError,"\n\nUnknown SKU Found:\n Order ID:#{the_order.ship_station_order_id}\tSKU: #{sku}\n\n" unless @@allowed_skus.include?(sku)
+      # raise ArgumentError,"\n\nUnknown SKU Found:\n Order ID:#{the_order.ship_station_order_id}\tSKU: #{sku}\n\n" unless @@allowed_skus.include?(sku)
+      sku_error(the_order, sku) unless @@allowed_skus.include?(sku)
       super(the_order,sku,quantity)
     end
 

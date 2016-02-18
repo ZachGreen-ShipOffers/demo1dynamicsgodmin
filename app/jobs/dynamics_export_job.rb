@@ -7,7 +7,11 @@ class DynamicsExportJob < ActiveJob::Base
   end
 
   def error(job, e)
-    ap e
+    ap e.message
+  end
+
+  def failure(job)
+    ap job
   end
 
 

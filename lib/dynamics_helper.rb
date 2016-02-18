@@ -1,6 +1,13 @@
 module DynamicsHelper
+  class ExportException < StandardError
+
+  end
 
   class ShipmentHelper
+
+    def sku_error(the_order, sku)
+      raise ExportException, "Unknown SKU Found: #{sku}\n Order ID: #{the_order.order_id}"
+    end
 
 
     def self.getClientFromCode(client_code)
