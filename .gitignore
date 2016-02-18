@@ -11,4 +11,5 @@
 /log/*
 !/log/.keep
 /tmp
+/external_files
 /config/database.yml

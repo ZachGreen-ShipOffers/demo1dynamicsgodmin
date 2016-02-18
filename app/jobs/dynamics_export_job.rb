@@ -11,8 +11,8 @@ class DynamicsExportJob < ActiveJob::Base
   end
 
 
-  def perform(cpny)
-    e = Export.new(cpny, '2016-02-17', '2016-02-17')
+  def perform(cpny,date)
+    e = Export.new(cpny, date)
     e.export
   end
 end

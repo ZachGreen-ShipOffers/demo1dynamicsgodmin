@@ -4,10 +4,10 @@ class Export
   @@ship_kind = 'FULFILLMENT'.freeze
   attr_accessor :cpny
 
-  def initialize(cpny,sd,ed)
+  def initialize(cpny,sd,ed='')
     @cpny = ClientCompany.where(dyna_code: cpny).first
     @start_date = Date.parse(sd) rescue Date.today
-    @end_date = Date.parse(ed) rescue Date.today
+    @end_date = Date.parse(sd) rescue Date.today
   end
 
   def shipment_count

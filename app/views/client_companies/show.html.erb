@@ -1,0 +1,36 @@
+<%= render partial: "breadcrumb" %>
+
+<table class="table table-striped">
+  <% @resource_service.attrs_for_show.each do |attr| %>
+    <tr>
+      <th><%= @resource_class.human_attribute_name(attr) %></th>
+      <td><%= column_value(@resource, attr) %></td>
+    </tr>
+  <% end %>
+</table>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Sku</th>
+      <th>Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @resource.client_products.each do |cp| %>
+      <tr>
+        <td><%= cp.sku %></td>
+        <td><%= cp.name %></td>
+        <td><%= cp.description %></td>
+        <td>
+          <div class="btn-group btn-group-sm pull-right">
+            <a class="btn btn-default" href="/client_products/<%= cp.id %>">Show</a>
+            <a class="btn btn-default" href="/client_products/<%= cp.id %>/edit">Edit</a>
+            <a class="btn btn-danger" data-confirm="Are you sure?" rel="nofollow" href="/client_products/#">Deactivate</a>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

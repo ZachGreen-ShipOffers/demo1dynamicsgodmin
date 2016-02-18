@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
+  resources :client_products
   resources :ship_station_orders
   resources :ship_station_shipments
   resources :client_companies
   # resources :export
   get '/export' => 'export#index'
-  get '/export/:code' => 'export#run'
+  get '/export/checkjob/:id' => 'export#checkjob'
+  get '/export/dyinfo/:code/:date' => 'export#dyinfo'
+  get '/export/:code/:date' => 'export#run'
   root to: "export#index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
